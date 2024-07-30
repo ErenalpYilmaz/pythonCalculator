@@ -11,42 +11,34 @@ def carp(a, b):
 def bol(a,b):
     return a/b
 
-def islem(islem):
-    sonuc = 0
+def islem(islem,sayi1,sayi2):
+
+    if islem not in "+-?*":
+        return "Lutfen su islemlerden birini seciniz :+-?*"
+
     match islem:
         case "+":
             sonuc = topla(sayi1, sayi2)
-            print(f"Sonuc = {sonuc}")
+            return f"Sonuc = {sonuc}"
         case "-":
             sonuc = cikar(sayi1, sayi2)
-            print(f"Sonuc = {sonuc}")
+            return f"Sonuc = {sonuc}"
         case "*":
             sonuc = carp(sayi1, sayi2)
-            print(f"Sonuc = {sonuc}")
+            return f"Sonuc = {sonuc}"
         case "/":
             sonuc = bol(sayi1, sayi2)
-            print(f"Sonuc = {sonuc}")
+            return f"Sonuc = {sonuc}"
 
-def tekrar(islemStr):
-    tekrarSayisi = 0
-    sonuc = ""
-    for i in "+-*/":
-        if islemStr == i:
-            tekrarSayisi +=1
-            sonuc +=""
-    if tekrarSayisi ==1 :
-        islem(islemStr)
-    else :
-        print("Yapmak istediğiniz işlemi yanlış belirttiniz . ")
+while True:
+    try:
+        sayi1 = float(input("1. sayıyı giriniz : "))
+        sayi2 = float(input("2. sayıyı giriniz : "))
+        islemStr = str(input("Yapmak istediğiniz işlemi seçiniz +-*/  :"))
+        print(islem(islemStr,sayi1,sayi2))
+    except:
+        print("Lutfen sayilari duzgun giriniz.")
 
-
-try :
-    sayi1 = float(input("1. sayıyı giriniz : "))
-    sayi2 = float(input("2. sayıyı giriniz : "))
-    islemStr = str(input("Yapmak istediğiniz işlemi seçiniz +-*/  :"))
-    tekrar(islemStr)
-except :
-    print("Hatalı işlem yaptınız.")
 
 
 
